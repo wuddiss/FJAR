@@ -1,0 +1,17 @@
+const int analogInPin = 1;  // Analog input pin that you are using
+
+void setup() {
+  USBSerial.begin(115200);
+}
+
+void loop() {
+  int sensorValue = analogRead(analogInPin);  // Read the analog input voltage
+  
+  float voltage = sensorValue * (5 / 4095.0);  // Convert the raw ADC value to voltage (assuming ESP32-S3 ADC is 12-bit)
+  
+  USBSerial.print("Analog Voltage: ");
+  USBSerial.print(voltage);
+  USBSerial.println(" V");
+
+  delay(1000);  // Delay for readability
+}
